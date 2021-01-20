@@ -58,23 +58,10 @@ export default {
       try {
         // this.loading = true
         // this.alert = null
-
         const resp = await axios.post(
           'https://vue3-course-week3-default-rtdb.europe-west1.firebasedatabase.app/blocks.json',
           this.option,
         )
-
-        // if (!data) {
-        //   throw new Error('List of people in DB is empty!')
-        // }
-        // console.log(data)
-        // this.people = Object.keys(data).map(key => {
-        //   return {
-        //     id: key,
-        //     // firstName: data[key].firstName,
-        //     ...data[key],
-        //   }
-        // })
         // this.loading = false
       } catch (error) {
         console.log(error)

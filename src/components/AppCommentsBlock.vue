@@ -17,24 +17,24 @@
           v-for="(comment) in comments"
           :key="comment.id"
         >
-          <div>
-            <p><strong>{{ comment.email }}</strong></p>
-            <small>{{ comment.body }}</small>
-          </div>
+          <app-comment :comment="comment"></app-comment>
         </li>
       </ul>
     </div>
-    <div
-      class="loader"
-      v-if="loading"
-    ></div>
+    <app-loader v-if="loading"></app-loader>
   </div>
 </template>
 
 <script>
+import AppLoader from '@/components/support/AppLoader.vue'
+import AppComment from '@/components/support/AppComment.vue'
 import axios from 'axios'
 
 export default {
+  components: {
+    AppLoader,
+    AppComment,
+  },
   data() {
     return {
       comments: [],
@@ -53,7 +53,9 @@ export default {
         this.loading = false
         this.showComments = true
       } catch (e) {
+        console.log(e)
         this.loading = false
+        this.showComments = false
       }
     },
   },
