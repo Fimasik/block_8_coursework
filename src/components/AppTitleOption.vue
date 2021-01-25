@@ -3,11 +3,15 @@
 </template>
 <script>
 export default {
-  // props: ['data'],
-  data() {
-    return {
-      title: this.$attrs.value,
-    }
+  props: {
+    title: {
+      type: String,
+      required: true,
+      validator(val) {
+        return val.length > 3
+      },
+    },
   },
+  inheritAttrs: false,
 }
 </script>

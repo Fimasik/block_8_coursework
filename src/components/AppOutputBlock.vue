@@ -2,8 +2,8 @@
   <div class="card card-w70">
     <div v-if="appOptions.length">
       <component
-        :is="comp.type"
         v-for="comp in appOptions"
+        :is="comp.type"
         :key="comp.type"
         v-bind="comp"
       ></component>
@@ -19,7 +19,10 @@ import AppSubtitleOption from '@/components/AppSubtitleOption.vue'
 import AppTextOption from '@/components/AppTextOption.vue'
 
 export default {
-  props: ['appOptions'],
+  // props: ['appOptions'],
+  props: {
+    appOptions: Array[Object],
+  },
   components: {
     AppAvatarOption,
     AppTitleOption,

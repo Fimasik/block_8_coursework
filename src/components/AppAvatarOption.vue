@@ -1,17 +1,11 @@
 <template>
   <div class="avatar">
-    <img :src="image">
+    <img :src="$attrs.image">
   </div>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      image: this.$attrs.value,
-    }
-  },
-}
+export default {}
 </script>
 
 <style scoped>

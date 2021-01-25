@@ -1,14 +1,5 @@
 <template>
   <p>
-    {{ text }}
+    {{ $attrs.text }}
   </p>
 </template>
-<script>
-export default {
-  data() {
-    return {
-      text: this.$attrs.value,
-    }
-  },
-}
-</script>

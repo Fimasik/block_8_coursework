@@ -18,8 +18,16 @@ import AppLoader from '@/components/support/AppLoader.vue'
 import axios from 'axios'
 
 export default {
-  mounted() {
-    this.loadBlocks()
+  async mounted() {
+    await this.loadBlocks()
+    const blockCounter = this.appOptions.length
+    if (blockCounter) {
+      this.$toast.success(
+        `${this.appOptions.length} block${blockCounter > 1 ? 's' : ''} ${
+          blockCounter > 1 ? 'are' : 'is'
+        } loaded`,
+      )
+    }
   },
   data() {
     return {
@@ -43,6 +51,10 @@ export default {
         const { data } = await axios.get(
           'https://vue3-course-week3-default-rtdb.europe-west1.firebasedatabase.app/blocks.json',
         )
+        if (!data) {
+          this.$toast.info(`There are no blocks in DB. Create one!`)
+          throw new Error('no data')
+        }
         this.appOptions = Object.keys(data).map(key => {
           return {
             ...data[key],
@@ -50,7 +62,6 @@ export default {
         })
         this.loading = false
       } catch (e) {
-        console.log(e)
         this.loading = false
       }
     },
