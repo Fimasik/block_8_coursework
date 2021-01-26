@@ -3,8 +3,8 @@
     class="container column"
     v-if="!loading"
   >
-    <app-type-selection @newoption="addNewOption"></app-type-selection>
-    <app-output-block :appOptions="appOptions"></app-output-block>
+    <app-type-selection @new-option="addNewOption"></app-type-selection>
+    <app-output-block :app-options="appOptions"></app-output-block>
   </div>
   <app-loader v-else></app-loader>
   <app-comments-block v-if="!loading"></app-comments-block>
